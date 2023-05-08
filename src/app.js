@@ -19,27 +19,51 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 today.innerHTML = `${day} ${hours}:${minutes}`;
-
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/1555/1555512.png"
+              src="https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               alt="weather-icon"
-              width="100"
+              width="50"
             />
-            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
             <div class="weather-forecast-temperatures">
-              <span class="forecast-max-temperature">16</span>
-              <span class="forecast-min-temperature">11</span>
+              <span class="forecast-max-temperature">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+              <span class="forecast-min-temperature">${Math.round(
+                forecastDay.temp.min
+              )}°</span>
             </div>
       </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -53,7 +77,7 @@ function getForecast(coordinates) {
   axios(apiUrl).then(displayForecast);
 }
 function displayTemperature(response) {
-  console.log(response.data.daily);
+  console.log(response.data);
   let currentTemp = document.querySelector("#degrees");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
