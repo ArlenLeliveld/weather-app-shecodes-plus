@@ -28,6 +28,8 @@ function displayTemperature(response) {
   let condition = document.querySelector("#description");
   let icon = document.querySelector("#icon");
   celsiusTemperature = response.data.main.temp;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   currentTemp.innerHTML = Math.round(celsiusTemperature);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
