@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
-    179.4deg,
-    rgb(253, 240, 233) 2.2%,
-    rgb(255, 194, 203) 96.2%
+    109.6deg,
+    rgb(204, 228, 247) 11.2%,
+    rgb(237, 246, 250) 100.2%
   );
 }
 .city {
@@ -79,23 +79,15 @@ button:hover {
   top: 60px;
   opacity: 70%;
 }
-.units {
+.unit {
   font-size: 16px;
   position: relative;
   top: -12px;
+  color: palevioletred;
 }
 .degrees {
   color: palevioletred;
   font-weight: bold;
-  opacity: 100%;
-}
-.active {
-  color: palevioletred;
-  cursor: default;
-  text-decoration: none;
-}
-.active:hover {
-  text-decoration: none;
 }
 .weather-forecast {
   text-align: center;
