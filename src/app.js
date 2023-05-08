@@ -19,7 +19,30 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 today.innerHTML = `${day} ${hours}:${minutes}`;
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1555/1555512.png"
+              alt="weather-icon"
+              width="100"
+            />
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-temperatures">
+              <span class="forecast-max-temperature">16</span>
+              <span class="forecast-min-temperature">11</span>
+            </div>
+      </div>`;
+  });
 
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function displayTemperature(response) {
   console.log(response.data);
   let currentTemp = document.querySelector("#degrees");
@@ -54,7 +77,6 @@ function handleInput(event) {
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleInput);
-//Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
 
 function here(response) {
   console.log(response.data);
@@ -114,3 +136,4 @@ let celsiusLink = document.querySelector("#celsiusLink");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let celsiusTemperature = null;
+displayForecast();
