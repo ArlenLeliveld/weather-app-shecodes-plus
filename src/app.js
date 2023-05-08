@@ -37,20 +37,20 @@ function cityWeather(response) {
   );
   icon.setAttribute("alt", "icon");
 }
-function searchCity(event) {
-  event.preventDefault();
-  let h1 = document.querySelector("h1");
-  let input = document.querySelector("#searchCity");
-  h1.innerHTML = `${input.value}`;
-  //
-  //
-  let city = input.value;
+function search(city) {
   let apiKey = "e96362f7a3e49741bc7f62bcb18d316c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(cityWeather);
 }
+function handleInput(event) {
+  event.preventDefault();
+  let h1 = document.querySelector("h1");
+  let cityInput = document.querySelector("#searchCity");
+  h1.innerHTML = `${cityInput.value}`;
+  search(cityInput.value);
+}
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", handleInput);
 //Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
 
 function degreesCelsius(event) {
