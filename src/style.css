@@ -102,3 +102,7 @@ button:hover {
 .forecast-min-temperature {
   opacity: 60%;
 }
+.github-link {
+  text-decoration: none;
+  color: palevioletred;
+}
