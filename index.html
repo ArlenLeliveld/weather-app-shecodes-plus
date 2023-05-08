@@ -19,18 +19,58 @@
   </head>
   <body>
     <div class="container">
-      <form action="/submit" id="search-form">
-        <input
-          type="text"
-          placeholder="Search for a location"
-          class="search-bar"
-          id="search-city"
-        />
-        <button type="submit" id="searchCity">Search</button>
-        <button type="submit" id="currentLocationButton">
-          <i class="fa-solid fa-location-dot"></i>
-        </button>
-      </form>
+      <div class="weather-app">
+        <form action="/submit" id="search-form">
+          <input
+            type="text"
+            placeholder="Search for a location"
+            class="search-bar"
+            id="search-city"
+          />
+          <button type="submit" class="search-button" id="searchCity">
+            Search
+          </button>
+          <button
+            type="submit"
+            class="current-location"
+            id="currentLocationButton"
+          >
+            <i class="fa-solid fa-location-dot"></i>
+          </button>
+        </form>
+        <div class="row">
+          <div class="col-4">
+            <h1>Koksijde</h1>
+            <h2>
+              <div class="date" id="today">Friday 14:30</div>
+              <div class="condition">Cloudy</div>
+              <div class="temperature-today">
+                <span id="degrees">11</span>
+                <span class="units">
+                  <a href="#" id="celsius" class="active">°C</a>/
+                  <a href="#" id="fahrenheit">°F</a>
+                </span>
+              </div>
+            </h2>
+          </div>
+          <div class="col-3 weather-emoji">☁️</div>
+          <div class="col-5">
+            <ul>
+              <li>Precipitation: <span id="precipitation">73%</span></li>
+              <li>Wind: <span id="wind">12 </span> km/h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <footer class="link">
+      <a
+        href="https://github.com/ArlenLeliveld/SheCodes-project"
+        target="_blank"
+      >
+        Open-source code
+      </a>
+      by Arlen Leliveld
+    </footer>
   </body>
 </html>

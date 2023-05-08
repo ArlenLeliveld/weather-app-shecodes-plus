@@ -1,0 +1,63 @@
+ul {
+  list-style: none;
+}
+footer {
+  text-align: center;
+  position: relative;
+  top: -180px;
+}
+.date {
+  font-size: 20px;
+}
+.condition {
+  font-size: 20px;
+}
+.weather-app {
+  max-width: 800px;
+  display: block;
+  margin: 200px auto;
+  border: 1px solid #dadde1;
+  border-radius: 25px;
+  padding: 30px 50px;
+}
+.weather-emoji {
+  font-size: 80px;
+  position: relative;
+  top: 20px;
+}
+.search-bar {
+  border-radius: 30px;
+  width: 500px;
+  padding: 5px 20px;
+}
+.search-button {
+  border-radius: 30px;
+  padding: 5px 20px;
+}
+.current-location {
+  border-radius: 30px;
+  padding: 5px 35px;
+}
+.col-4 {
+  padding: 15px;
+}
+.col-5 {
+  position: relative;
+  top: 60px;
+}
+.units {
+  font-size: 16px;
+  position: relative;
+  top: -12px;
+  text-decoration: none;
+}
+.active {
+  color: palevioletred;
+}
+#celsius {
+  text-decoration: none;
+}
+#fahrenheit {
+  text-decoration: none;
+  color: black;
+}
