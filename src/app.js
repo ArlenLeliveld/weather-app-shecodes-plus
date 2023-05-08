@@ -64,6 +64,14 @@ function here(response) {
   h1.innerHTML = currentPlace;
   let currentTemp = document.querySelector("#degrees");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
+  let condition = document.querySelector("#description");
+  let icon = document.querySelector("#icon");
+  condition.innerHTML = response.data.weather[0].description;
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", "icon");
 }
 function showPosition(position) {
   console.log(position.coords.latitude);
