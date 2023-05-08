@@ -16,6 +16,7 @@
       src="https://kit.fontawesome.com/287d2b6714.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -25,9 +26,10 @@
             type="text"
             placeholder="Search for a location"
             class="search-bar"
-            id="search-city"
+            id="searchCity"
+            autocomplete="off"
           />
-          <button type="submit" class="search-button" id="searchCity">
+          <button type="submit" class="search-button" id="search-city">
             Search
           </button>
           <button
@@ -56,7 +58,7 @@
           <div class="col-3 weather-emoji">☁️</div>
           <div class="col-5">
             <ul>
-              <li>Precipitation: <span id="precipitation">73%</span></li>
+              <li>Humidity: <span id="humidity">73</span>%</li>
               <li>Wind: <span id="wind">12 </span> km/h</li>
             </ul>
           </div>
@@ -72,5 +74,6 @@
       </a>
       by Arlen Leliveld
     </footer>
+    <script src="src/app.js"></script>
   </body>
 </html>
