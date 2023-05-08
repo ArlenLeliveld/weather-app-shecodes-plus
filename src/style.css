@@ -1,4 +1,4 @@
-h1 {
+.city {
   color: palevioletred;
 }
 h2 {
@@ -67,6 +67,10 @@ button {
   position: relative;
   top: -12px;
 }
+.degrees {
+  color: palevioletred;
+  font-weight: bold;
+}
 .active {
   color: palevioletred;
   cursor: default;
@@ -74,4 +78,10 @@ button {
 }
 .active:hover {
   text-decoration: none;
+}
+.weather-forecast {
+  text-align: center;
+}
+.weather-forecast-temperatures {
+  font-size: 16px;
 }
