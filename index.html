@@ -44,18 +44,27 @@
           <div class="col-4">
             <h1>Koksijde</h1>
             <h2>
-              <div class="date" id="today">Friday 14:30</div>
-              <div class="condition">Cloudy</div>
-              <div class="temperature-today">
-                <span id="degrees">11</span>
-                <span class="units">
-                  <a href="#" id="celsius" class="active">°C</a>/
-                  <a href="#" id="fahrenheit">°F</a>
-                </span>
-              </div>
+              <ul class="weather-now">
+                <li class="date" id="today">Friday 14:30</li>
+                <li class="condition" id="description">Cloudy</li>
+                <li class="temperature-today">
+                  <span id="degrees">11</span>
+                  <span class="units">
+                    <a href="#" id="celsius" class="active">°C</a>/
+                    <a href="#" id="fahrenheit">°F</a>
+                  </span>
+                </li>
+              </ul>
             </h2>
           </div>
-          <div class="col-3 weather-emoji">☁️</div>
+          <div class="col-3 weather-emoji">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1555/1555512.png"
+              alt="weather-icon"
+              width="150"
+              id="icon"
+            />
+          </div>
           <div class="col-5">
             <ul>
               <li>Humidity: <span id="humidity">73</span>%</li>

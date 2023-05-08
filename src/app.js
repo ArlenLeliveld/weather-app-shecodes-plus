@@ -25,9 +25,17 @@ function cityWeather(response) {
   let currentTemp = document.querySelector("#degrees");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let condition = document.querySelector("#description");
+  let icon = document.querySelector("#icon");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
   humidity.innerHTML = Math.round(response.data.main.humidity);
-  wind.innerHTML = response.data.wind.speed;
+  wind.innerHTML = Math.round(response.data.wind.speed);
+  condition.innerHTML = response.data.weather[0].description;
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", "icon");
 }
 function searchCity(event) {
   event.preventDefault();
