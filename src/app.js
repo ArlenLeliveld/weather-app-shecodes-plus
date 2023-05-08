@@ -20,14 +20,15 @@ if (minutes < 10) {
 }
 today.innerHTML = `${day} ${hours}:${minutes}`;
 
-function cityWeather(response) {
+function displayTemperature(response) {
   console.log(response.data);
   let currentTemp = document.querySelector("#degrees");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let condition = document.querySelector("#description");
   let icon = document.querySelector("#icon");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  currentTemp.innerHTML = Math.round(celsiusTemperature);
   humidity.innerHTML = Math.round(response.data.main.humidity);
   wind.innerHTML = Math.round(response.data.wind.speed);
   condition.innerHTML = response.data.weather[0].description;
@@ -40,7 +41,7 @@ function cityWeather(response) {
 function search(city) {
   let apiKey = "e96362f7a3e49741bc7f62bcb18d316c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(cityWeather);
+  axios.get(apiUrl).then(displayTemperature);
 }
 function handleInput(event) {
   event.preventDefault();
@@ -53,29 +54,6 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleInput);
 //Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
 
-function degreesCelsius(event) {
-  event.preventDefault();
-  let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = 20;
-}
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", degreesCelsius);
-
-function degreesFahrenheit(event) {
-  event.preventDefault();
-  let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = 90;
-}
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", degreesFahrenheit);
-
-// weather API
-
-//function currentLocation(event) {
-// event.preventDefault();
-//navigator.geolocation.getCurrentPosition(here);
-//}
-//
 function here(response) {
   console.log(response.data);
   let currentPlace = response.data.name;
@@ -101,3 +79,28 @@ function currentLocation(event) {
 }
 let currentLoc = document.querySelector("#currentLocationButton");
 currentLoc.addEventListener("click", currentLocation);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let degrees = document.querySelector("#degrees");
+  degrees.innerHTML = Math.round(fahrenheitTemperature);
+  celsiusLink.classList.remove("active");
+  celsiusLink.classList.add("inactive");
+  fahrenheitLink.classList.add("active");
+}
+let fahrenheitLink = document.querySelector("#fahrenheitLink");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let degrees = document.querySelector("#degrees");
+  degrees.innerHTML = Math.round(celsiusTemperature);
+  fahrenheitLink.classList.remove("active");
+  fahrenheitLink.classList.add("inactive");
+  celsiusLink.classList.add("active");
+}
+let celsiusLink = document.querySelector("#celsiusLink");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let celsiusTemperature = null;
